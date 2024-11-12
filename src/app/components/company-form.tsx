@@ -1,4 +1,4 @@
-'use client';
+
 
 import React from 'react';
 import { Form, Formik } from 'formik';
@@ -13,8 +13,7 @@ export type CompanyFieldValues = {
   category: string;
   date: string;
   description: string;
-
-}
+};
 
 const initialValues: CompanyFieldValues = {
   name: '',
@@ -25,11 +24,8 @@ const initialValues: CompanyFieldValues = {
   description: ''
 };
 
-
 export interface CompanyFormProps {
-  onSubmit: (values: CompanyFieldValues) => void
-    | Promise<void>;
-
+  onSubmit: (values: CompanyFieldValues) => void | Promise<void>;
 }
 
 export default function CompanyForm({ onSubmit }: CompanyFormProps) {
@@ -45,7 +41,11 @@ export default function CompanyForm({ onSubmit }: CompanyFormProps) {
           </div>
           <div className="flex flex-col flex-1 gap-5">
             <InputField label="Name" placeholder="Name" name="name" />
-            <InputField label="Category" placeholder="Category" name="category" />
+            <InputField
+              label="Category"
+              placeholder="Category"
+              name="category"
+            />
             <InputField label="Joined date" type="date" name="date" />
             <InputField
               label="Description"
