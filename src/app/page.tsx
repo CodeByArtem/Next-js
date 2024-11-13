@@ -1,5 +1,3 @@
-import AddCompanyButton from '@/app/components/add-company-button';
-
 
 
 export default function Home() {
@@ -7,7 +5,6 @@ export default function Home() {
 
     <main>
       <h1 className="text-xl">Home Page</h1>
-<AddCompanyButton/>
     </main>
   );
 }
