@@ -12,7 +12,7 @@ export default async function Page({}: PageProps) {
   const companies = await getCompanies();
 
   const counts = getCountById(companies, 'categoryId');
-  
+
 
   return (
     <DashboardCard label="Categories of companies">
