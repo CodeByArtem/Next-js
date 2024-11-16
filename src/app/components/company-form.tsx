@@ -1,4 +1,4 @@
-'use client';
+"use client";
 
 import React from 'react';
 import { Form, Formik } from 'formik';
@@ -7,7 +7,7 @@ import {
   CompanyStatus,
   createCompany,
   getCategories,
-  getCountries,
+  getCountries
 } from '@/lib/api';
 import Button from '@/app/components/button';
 import InputField from '@/app/components/input-field';
@@ -29,7 +29,7 @@ const initialValues: CompanyFieldValues = {
   status: CompanyStatus.Active,
   joinedDate: '',
   categoryId: '',
-  countryId: '',
+  countryId: ''
 };
 
 export interface CompanyFormProps {
@@ -42,22 +42,22 @@ export default function CompanyForm({ onSubmit }: CompanyFormProps) {
   const { data: categories } = useQuery({
     queryKey: ['categories'],
     queryFn: getCategories,
-    staleTime: 10 * 1000,
+    staleTime: 10 * 1000
   });
 
   const { data: countries } = useQuery({
     queryKey: ['countries'],
     queryFn: getCountries,
-    staleTime: 10 * 1000,
+    staleTime: 10 * 1000
   });
 
   const { mutateAsync, isPending } = useMutation({
     mutationFn: createCompany,
     onSuccess: () => {
       queryClient.invalidateQueries({
-        queryKey: ['companies'],
+        queryKey: ['companies']
       });
-    },
+    }
   });
 
   const handleSubmit = async (values: CompanyFieldValues) => {
@@ -65,8 +65,9 @@ export default function CompanyForm({ onSubmit }: CompanyFormProps) {
       ...values,
       categoryTitle:
         categories.find(({ id }) => id === values.categoryId)?.title ?? '',
+
       countryTitle:
-        countries.find(({ id }) => id === values.countryId)?.title ?? '',
+        countries.find(({ id }) => id === values.countryId)?.title ?? ''
     });
 
     if (onSubmit) {
@@ -93,7 +94,7 @@ export default function CompanyForm({ onSubmit }: CompanyFormProps) {
                   <option key={status} value={status}>
                     <StatusLabel status={status} styled={false} />
                   </option>
-                ),
+                )
               )}
             </InputField>
             <InputField
